@@ -7,7 +7,7 @@ This application is your basic Application that provides your basic needs if you
 
 ### Example
 * ![](./XamarinApp/XamarinApp/assets/Workflow.PNG)
-* ![](./XamarinApp/XamarinApp/assets/App Layout.jpg)
+* ![](./XamarinApp/XamarinApp/assets/App_Layout.jpg)
 
 ### Getting Started
 * Open Visual Studio
