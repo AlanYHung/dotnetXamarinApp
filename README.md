@@ -6,12 +6,12 @@
 This application is your basic Application that provides your basic needs if you ever get lost while hiking.  It provides a compass that will always point to North, a Button that will turn on your phone camera's light, and a display to estimate the amount of time you have left in your battery life.
 
 ### Example
-* ![](./XamarinApp/XamarinApp/assets/Workflow.PNG)
-* ![](./XamarinApp/XamarinApp/assets/App_Layout.jpg)
+![](./XamarinApp/XamarinApp/assets/Workflow.PNG)
+![](./XamarinApp/XamarinApp/assets/App_Layout.jpg)
 
 ### Getting Started
 * Open Visual Studio
-* Clone [Xamarin Project Git Repository](https://github.com/AlanYHung/dotnetXamarin)
+* Clone [Xamarin Project Git Repository](https://github.com/AlanYHung/dotnetXamarinApp)
 * Click Run
 
 ### Change Log
