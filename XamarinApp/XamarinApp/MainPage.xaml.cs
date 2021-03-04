@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace XamarinApp
@@ -13,6 +9,18 @@ namespace XamarinApp
     public MainPage()
     {
       InitializeComponent();
+    }
+
+    async void OnToggled(object sender, ToggledEventArgs e)
+    {
+      if(e.Value)
+      {
+        await Flashlight.TurnOnAsync();
+      }
+      else
+      {
+        await Flashlight.TurnOffAsync();
+      }
     }
   }
 }

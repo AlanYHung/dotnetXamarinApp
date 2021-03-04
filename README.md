@@ -17,6 +17,7 @@ This application is your basic Application that provides your basic needs if you
 ### Change Log
 * 0.0.1 - 3/02/2021 9:13pm - Set up initial repo
 * 0.0.2 - 3/02/2021 9:13pm - Set Up Page Layout for App
+* 0.0.3 - 3/03/2021 8:58pm - Created a Switch that turns on and off the camera light
 
 ### Attribution
 * [Microsoft Docs](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/)
