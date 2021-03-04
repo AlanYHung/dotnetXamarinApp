@@ -8,6 +8,14 @@
             <Label Text="Survival Basics!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
         </Frame>
 
+        <Label Text="Flashlight" 
+               Margin="10, 0"/>
+        <Switch OnColor="Black"
+                ThumbColor="#016b03"
+                Margin="10, 0"
+                HorizontalOptions="Start"
+                Toggled="OnToggled" />
+
         <BoxView Color="#016b03"
              Margin="0, 20"
              CornerRadius="320"
@@ -26,12 +34,6 @@
              VerticalOptions="Center"
              HorizontalOptions="Center" />
 
-        <Button Text="FlashLight"
-                Margin="0, 30"
-                WidthRequest="200"
-                HorizontalOptions="Center"
-                CornerRadius="20"
-                Clicked="OnButtonClicked" />
     </StackLayout>
 
 </ContentPage>
