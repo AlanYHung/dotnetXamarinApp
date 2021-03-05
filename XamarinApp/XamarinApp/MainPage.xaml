@@ -3,37 +3,48 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XamarinApp.MainPage">
 
-    <StackLayout>
-        <Frame BackgroundColor="#016b03" Padding="24" CornerRadius="0">
-            <Label Text="Survival Basics!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
-        </Frame>
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame BackgroundColor="#016b03" Padding="24" CornerRadius="0">
+                <Label Text="Survival Basics!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+            </Frame>
 
-        <Label Text="Flashlight" 
-               Margin="10, 0"/>
-        <Switch OnColor="Black"
-                ThumbColor="#016b03"
-                Margin="10, 0"
-                HorizontalOptions="Start"
-                Toggled="OnToggled" />
+            <Label Text="Flashlight" 
+                   Margin="10, 0"/>
+            <Switch OnColor="Black"
+                    ThumbColor="#016b03"
+                    Margin="10, 0"
+                    HorizontalOptions="Start"
+                    Toggled="OnToggled" />
 
-        <BoxView Color="#016b03"
-             Margin="0, 20"
-             CornerRadius="320"
-             WidthRequest="320"
-             HeightRequest="320"
-             VerticalOptions="Center"
-             HorizontalOptions="Center" />
-        
-        <Label Text="Battery Life Remaining" 
-             Margin="0, 10, 0, 0"
-             HorizontalOptions="Center"  />
-        <BoxView Color="black"
-             CornerRadius="50"
-             WidthRequest="320"
-             HeightRequest="100"
-             VerticalOptions="Center"
-             HorizontalOptions="Center" />
+            <BoxView Color="#016b03"
+                 Margin="0, 20"
+                 CornerRadius="320"
+                 WidthRequest="320"
+                 HeightRequest="320"
+                 VerticalOptions="Center"
+                 HorizontalOptions="Center" />
 
-    </StackLayout>
 
+            <!--https://www.youtube.com/watch?v=eDx8tbUrkP0-->
+            <Label Text="Battery Life Remaining" 
+                 Margin="0, 10, 0, 0"
+                 HorizontalOptions="Center"  />
+            <Label x:Name="digitalclock"
+                   HorizontalOptions="Center"
+                   FontSize="Large"
+                   Scale="1"
+                   Text=""
+                   TextColor="#016b03" ></Label>
+
+
+            <!--<BoxView Color="black"
+                 CornerRadius="50"
+                 WidthRequest="320"
+                 HeightRequest="100"
+                 VerticalOptions="Center"
+                 HorizontalOptions="Center" />-->
+
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>
