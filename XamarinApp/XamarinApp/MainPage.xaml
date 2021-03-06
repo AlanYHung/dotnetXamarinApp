@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="XamarinApp.MainPage">
+			 x:Class="XamarinApp.MainPage">
 
     <ContentPage.Content>
         <StackLayout>
@@ -17,18 +17,26 @@
                     HorizontalOptions="Start"
                     Toggled="OnToggled" />
 
-            <BoxView Color="#016b03"
-                 Margin="0, 20"
-                 CornerRadius="320"
-                 WidthRequest="320"
-                 HeightRequest="320"
-                 VerticalOptions="Center"
-                 HorizontalOptions="Center" />
+            <Frame BorderColor="Black"
+                Margin="0, 20, 0, 40"
+                CornerRadius="250"
+                WidthRequest="250"
+                HeightRequest="250"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                HasShadow="True" >
+
+                <Image x:Name="Compass"
+                       Source="Compass.png" 
+                       Aspect="AspectFill"
+                       WidthRequest="230"
+                       HeightRequest="230" />
+            </Frame>
 
 
             <!--https://www.youtube.com/watch?v=eDx8tbUrkP0-->
             <Label Text="Battery Life Remaining" 
-                 Margin="0, 10, 0, 0"
+                 Margin="0, 20, 0, 0"
                  HorizontalOptions="Center"  />
             <Label x:Name="digitalclock"
                    HorizontalOptions="Center"
@@ -37,13 +45,16 @@
                    Text=""
                    TextColor="#016b03" ></Label>
 
-
-            <!--<BoxView Color="black"
-                 CornerRadius="50"
-                 WidthRequest="320"
-                 HeightRequest="100"
-                 VerticalOptions="Center"
-                 HorizontalOptions="Center" />-->
+            <Label x:Name="xReading"
+                   HorizontalOptions="Center"
+                   Margin="0,0,0,0"
+                   Text="" />
+            <Label x:Name="yReading"
+                   Margin="0,30,0,0"
+                   Text="" />
+            <Label x:Name="zReading"
+                   Margin="0,30,0,0"
+                   Text="" />
 
         </StackLayout>
     </ContentPage.Content>

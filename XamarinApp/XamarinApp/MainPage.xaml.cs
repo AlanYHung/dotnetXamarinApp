@@ -27,6 +27,16 @@ namespace XamarinApp
 
         return true;
       });
+
+      Magnetometer.Start(SensorSpeed.UI);
+    }
+
+    void Magnetometer_ReadingChanged(object sender, MagnetometerChangedEventArgs e)
+    {
+      var data = e.Reading;
+      float xValue = data.MagneticField.X;
+
+      xReading.Text = xValue.ToString();
     }
 
     void DisplayCountdown()
