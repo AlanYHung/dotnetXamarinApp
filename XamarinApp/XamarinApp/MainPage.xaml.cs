@@ -29,14 +29,22 @@ namespace XamarinApp
       });
 
       Magnetometer.Start(SensorSpeed.UI);
+      Magnetometer.ReadingChanged += Magnetometer_ReadingChanged;
     }
 
     void Magnetometer_ReadingChanged(object sender, MagnetometerChangedEventArgs e)
     {
-      var data = e.Reading;
+      var data = e.Reading.MagneticField;
       float xValue = data.MagneticField.X;
+      float yValue = data.MagneticField.Y;
+      float zValue = data.MagneticField.Z;
 
       xReading.Text = xValue.ToString();
+      yReading.Text = yValue.ToString();
+      zReading.Text = zValue.ToString();
+
+      Compass.RotateXTo(xValue / 4, 250, Easing.SinInOut);
+      Compass.RotateYTo(yValue / 4, 250, Easing.SinInOut);
     }
 
     void DisplayCountdown()
