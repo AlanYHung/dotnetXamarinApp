@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -9,6 +10,9 @@ namespace XamarinApp
     uint BatteryLifeInSeconds { get; set; }
     double LastCharge { get; set; }
     int ElapsedTime { get; set; }
+    BatteryState isCharging { get; set; }
+    bool isEyeball { get; set; }
+    
 
     public MainPage()
     {
@@ -16,6 +20,7 @@ namespace XamarinApp
       BatteryLifeInSeconds = 18000;
       LastCharge = 1F;
       ElapsedTime = 0;
+      isEyeball = false;
 
       Battery.BatteryInfoChanged += Battery_BatteryInfoChanged;
 
@@ -30,21 +35,61 @@ namespace XamarinApp
 
       Magnetometer.Start(SensorSpeed.UI);
       Magnetometer.ReadingChanged += Magnetometer_ReadingChanged;
+
+      Compass.Start(SensorSpeed.UI);
+      Compass.ReadingChanged += Compass_ReadingChanged;
+    }
+
+    void OnImageTapped(Object sender, EventArgs e)
+    {
+      if (isEyeball)
+      {
+        Vibration.Vibrate(1000);
+        EyeballImage.IsVisible = false;
+        CompassFrame.IsVisible = true;
+        isEyeball = false;
+      }
+      else
+      {
+        CompassFrame.IsVisible = false;
+        EyeballImage.IsVisible = true;
+        isEyeball = true;
+      }
+    }
+
+    void Compass_ReadingChanged(object sender, CompassChangedEventArgs e)
+    {
+      var data = e.Reading;
+      double northReading = data.HeadingMagneticNorth;
+
+      if(isEyeball)
+      {
+        EyeballImage.RotateTo(-northReading, 250, Easing.SinInOut);
+      }
+      else
+      {
+        CompassImage.RotateTo(-northReading, 250, Easing.SinInOut);
+      }
+
+      HeadingLabel.Text = $"{(360 - northReading).ToString("0.00")} \u00B0N";
     }
 
     void Magnetometer_ReadingChanged(object sender, MagnetometerChangedEventArgs e)
     {
-      var data = e.Reading.MagneticField;
+      var data = e.Reading;
       float xValue = data.MagneticField.X;
       float yValue = data.MagneticField.Y;
-      float zValue = data.MagneticField.Z;
 
-      xReading.Text = xValue.ToString();
-      yReading.Text = yValue.ToString();
-      zReading.Text = zValue.ToString();
-
-      Compass.RotateXTo(xValue / 4, 250, Easing.SinInOut);
-      Compass.RotateYTo(yValue / 4, 250, Easing.SinInOut);
+      if (isEyeball)
+      {
+        EyeballImage.RotateXTo(yValue / 3, 250, Easing.SinInOut);
+        EyeballImage.RotateYTo(xValue / 2, 250, Easing.SinInOut);
+      }
+      else
+      {
+        CompassImage.RotateXTo(xValue / 3, 250, Easing.SinInOut);
+        CompassImage.RotateYTo(yValue / 3, 250, Easing.SinInOut);
+      }
     }
 
     void DisplayCountdown()
@@ -53,7 +98,15 @@ namespace XamarinApp
       int minutes = Convert.ToInt32(BatteryLifeInSeconds / 60 % 60);
       int seconds = Convert.ToInt32(BatteryLifeInSeconds % 60);
 
-      digitalclock.Text = hours.ToString("D2") + ":" + minutes.ToString("D2") + ":" + seconds.ToString("D2");
+      if(isCharging.Equals(BatteryState.Charging))
+      {
+        digitalclock.Text = "Charging...";
+      }
+      else
+      {
+        digitalclock.Text = hours.ToString("D2") + ":" + minutes.ToString("D2") + ":" + seconds.ToString("D2");
+      }
+
       BatteryLifeInSeconds--;
       ElapsedTime++;
     }
@@ -61,6 +114,7 @@ namespace XamarinApp
     void Battery_BatteryInfoChanged(object sender, BatteryInfoChangedEventArgs e)
     {
       double level = e.ChargeLevel;
+      isCharging = e.State;
 
       if (level < LastCharge)
       {

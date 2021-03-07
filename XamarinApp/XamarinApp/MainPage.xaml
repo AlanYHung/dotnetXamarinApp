@@ -4,36 +4,44 @@
 			 x:Class="XamarinApp.MainPage">
 
     <ContentPage.Content>
-        <StackLayout>
-            <Frame BackgroundColor="#016b03" Padding="24" CornerRadius="0">
-                <Label Text="Survival Basics!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+        <StackLayout BackgroundColor="Beige">
+            <Frame BackgroundColor="#016b03" CornerRadius="250" WidthRequest="300" HeightRequest="50" HorizontalOptions="Center" Margin="0, 20, 0, 20">
+                <Label Text="Survival Basics!" HorizontalTextAlignment="Center" TextColor="Yellow" FontSize="36"/>
             </Frame>
 
-            <Label Text="Flashlight" 
-                   Margin="10, 0"/>
-            <Switch OnColor="Black"
-                    ThumbColor="#016b03"
-                    Margin="10, 0"
-                    HorizontalOptions="Start"
-                    Toggled="OnToggled" />
-
-            <Frame BorderColor="Black"
-                   BackgroundColor="AliceBlue"
+            <Frame x:Name="CompassFrame"
+                BackgroundColor="AliceBlue"
                 Margin="0, 20, 0, 40"
                 CornerRadius="250"
                 WidthRequest="250"
                 HeightRequest="250"
                 VerticalOptions="Center"
                 HorizontalOptions="Center"
-                HasShadow="True" >
+                HasShadow="True"
+                IsVisible="True" >
 
-                <Image x:Name="Compass"
+                <Image x:Name="CompassImage"
                        Source="Compass.png" 
                        Aspect="AspectFill"
                        WidthRequest="230"
-                       HeightRequest="230" />
+                       HeightRequest="230">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnImageTapped" />
+                    </Image.GestureRecognizers>
+                </Image>
             </Frame>
 
+            <Image x:Name="EyeballImage"
+                    Source="Eyeball.png" 
+                    Aspect="AspectFit"
+                    Margin="0, 20, 0, 40"
+                    WidthRequest="300"
+                    HeightRequest="300"
+                    IsVisible="False">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnImageTapped" />
+                </Image.GestureRecognizers>
+            </Image>
 
             <!--https://www.youtube.com/watch?v=eDx8tbUrkP0-->
             <Label Text="Battery Life Remaining" 
@@ -46,16 +54,19 @@
                    Text=""
                    TextColor="#016b03" ></Label>
 
-            <Label x:Name="xReading"
+            <Label Text="Flashlight"
                    HorizontalOptions="Center"
-                   Margin="0,0,0,0"
-                   Text="" />
-            <Label x:Name="yReading"
+                   Margin="10, 0"/>
+            <Switch OnColor="Black"
+                    ThumbColor="#016b03"
+                    Margin="10, 0"
+                    HorizontalOptions="Center"
+                    Toggled="OnToggled" />
+
+            <Label x:Name="HeadingLabel"
                    HorizontalOptions="Center"
-                   Text="" />
-            <Label x:Name="zReading"
-                   HorizontalOptions="Center"
-                   Text="" />
+                   Text=""
+                   Margin="0, 10" />
 
         </StackLayout>
     </ContentPage.Content>

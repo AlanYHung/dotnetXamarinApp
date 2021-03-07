@@ -33,3 +33,4 @@ using Android.App;
 [assembly: UsesPermission(Android.Manifest.Permission.BatteryStats)]
 [assembly: UsesFeature("android.hardware.camera", Required = false)]
 [assembly: UsesFeature("android.hardware.camera.autofocus", Required = false)]
+[assembly: UsesPermission(Android.Manifest.Permission.Vibrate)]
